@@ -1,22 +1,22 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
-      <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
+      <div className='digits-landing-background'>
+        <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
 
-        <Grid.Column width={4}>
-          <Image size='small' circular src="/images/meteor-logo.png"/>
-        </Grid.Column>
-
-        <Grid.Column width={8}>
-          <h1>Welcome to this template</h1>
-          <p>Now get to work and modify this app!</p>
-        </Grid.Column>
-
-      </Grid>
+          <Grid.Column textAlign='center' >
+            <Header as='h1' color='grey'>Welcome to Opportunity Searcher</Header>
+            <Header as='h3' color='grey'>Opportunity Searcher provides a new way for local and non-local companies
+              who want to recruit students from UH to make their (potential) opportunities known to students.
+              At the same time, students can create profiles on the site with their interests.
+              This site can match students to employers and vice-versa.</Header>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }
