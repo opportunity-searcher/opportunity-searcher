@@ -14,6 +14,16 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultProfiles": [
+    { "name": "Mathew Ito", "owner": "john@foo.com", "location": "Los Angeles", "image": "https://avatars.githubusercontent.com/u/71101234?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Javascript"},
+    { "name": "Kegan Flagg", "owner": "john@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/43965971?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Rust"},
+    { "name": "Jay Paul Luben", "owner": "admin@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/49574660?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Kali Linux"}
+  ],
+
+  "defaultCompanies": [
+    { "name": "Google", "location": "1600 Ampitheatre Parkway", "image": "https://www.tripsavvy.com/thmb/oOoIxfAquiM7PBa_sDMXNdo_wtk=/2416x1600/filters:fill(auto,1)/how-to-visit-the-googleplex-google-hq-mountain-view-57e2d4515f9b586c3529ba9c.jpg", "description": "Small software company looking to make a splash in the tech world.", "skillsNeeded": "Java, Ruby, Rust", "owner": "john@foo.com"},
+    { "name": "Microsoft", "location": "Redmond, WA", "image": "https://s3-ap-southeast-2.amazonaws.com/casfawsbucket/casf/wp-content/uploads/2017/06/14130650/DuPont-Corian_Microsoft-FI-Foto-Andreas-Frisch-GSP-architekten-1080x640.jpg", "description": "The company that developed Visual Studio Code.", "skillsNeeded": "Java, C#, Rust", "owner": "john@foo.com" }
   ]
 }
-
