@@ -21,7 +21,7 @@ if (Stuffs.collection.find().count() === 0) {
 
 // Initialize the database with a default data document.
 function addProfiles(data) {
-  console.log(`  Adding: ${data.firstName} ${data.lastName}(${data.owner})`);
+  console.log(`  Adding: ${data.name} (${data.owner})`);
   Profiles.collection.insert(data);
 }
 
