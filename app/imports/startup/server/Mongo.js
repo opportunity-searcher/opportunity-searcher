@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Profiles } from '../../api/profile/Profiles.js';
+import { Companies } from '../../api/company/Companies';
 
 /* eslint-disable no-console */
 
@@ -29,5 +30,19 @@ if (Profiles.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
     Meteor.settings.defaultProfiles.map(data => addProfiles(data));
+  }
+}
+
+// Initialize the database with a default data document.
+function addCompanies(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Companies.collection.insert(data);
+}
+
+// Initialize the StuffsCollection if empty.
+if (Companies.collection.find().count() === 0) {
+  if (Meteor.settings.defaultData) {
+    console.log('Creating default data.');
+    Meteor.settings.defaultCompanies.map(data => addCompanies(data));
   }
 }
