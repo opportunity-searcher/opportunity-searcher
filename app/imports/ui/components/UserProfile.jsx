@@ -7,18 +7,18 @@ import { withRouter } from 'react-router-dom';
 class UserProfile extends React.Component {
   render() {
     return (
-        <Card>
-          <Image src={this.props.userprofile.image} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header>{this.props.userprofile.name}</Card.Header>
-            <Card.Meta>
-              <span className='date'>{this.props.userprofile.address}</span>
-            </Card.Meta>
-            <Card.Description>
-              {this.props.userprofile.description}
-            </Card.Description>
-          </Card.Content>
-        </Card>
+      <Card>
+        <Image src={this.props.userprofile.image} wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>{this.props.userprofile.name}</Card.Header>
+          <Card.Meta>
+            <span className='date'>{this.props.userprofile.address}</span>
+          </Card.Meta>
+          <Card.Description>
+            {this.props.userprofile.description}
+          </Card.Description>
+        </Card.Content>
+      </Card>
     );
   }
 }

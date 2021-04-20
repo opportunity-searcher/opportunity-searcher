@@ -7,18 +7,18 @@ import { withRouter } from 'react-router-dom';
 class CompanyProfile extends React.Component {
   render() {
     return (
-        <Card>
-          <Image src={this.props.companyprofile.image} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header>{this.props.companyprofile.name}</Card.Header>
-            <Card.Meta>
-              <span className='date'>{this.props.companyprofile.address}</span>
-            </Card.Meta>
-            <Card.Description>
-              {this.props.companyprofile.description}
-            </Card.Description>
-          </Card.Content>
-        </Card>
+      <Card>
+        <Image src={this.props.companyprofile.image} wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>{this.props.companyprofile.name}</Card.Header>
+          <Card.Meta>
+            <span className='date'>{this.props.companyprofile.address}</span>
+          </Card.Meta>
+          <Card.Description>
+            {this.props.companyprofile.description}
+          </Card.Description>
+        </Card.Content>
+      </Card>
     );
   }
 }
