@@ -19,7 +19,7 @@
   "defaultProfiles": [
     { "name": "Mathew Ito", "owner": "john@foo.com", "location": "Los Angeles", "image": "https://avatars.githubusercontent.com/u/71101234?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Javascript"},
     { "name": "Kegan Flagg", "owner": "john@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/43965971?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Rust"},
-    { "name": "Jay Paul Luben", "owner": "admin@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/49574660?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Kali Linux"}
+    { "name": "Jay Paul Luben", "owner": "john@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/49574660?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Kali Linux"}
   ],
 
   "defaultCompanies": [

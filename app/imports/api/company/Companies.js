@@ -18,7 +18,7 @@ class CompaniesCollection {
       image: String,
       description: String,
       // skills is currently a string but should be a list of strings (probably)
-      skillsNeeded: String,
+      skills: String,
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
