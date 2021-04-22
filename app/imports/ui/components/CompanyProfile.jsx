@@ -12,7 +12,7 @@ class CompanyProfile extends React.Component {
         <Card.Content>
           <Card.Header>{this.props.companyprofile.name}</Card.Header>
           <Card.Meta>
-            <span className='date'>{this.props.companyprofile.address}</span>
+            <span className='date'>{this.props.companyprofile.location}</span>
           </Card.Meta>
           <Card.Description>
             {this.props.companyprofile.description}
@@ -28,8 +28,9 @@ CompanyProfile.propTypes = {
   companyprofile: PropTypes.shape({
     name: PropTypes.string,
     image: PropTypes.string,
-    address: PropTypes.string,
+    location: PropTypes.string,
     description: PropTypes.string,
+    skills: PropTypes.string,
   }).isRequired,
 };
 

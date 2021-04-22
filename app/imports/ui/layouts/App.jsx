@@ -9,6 +9,8 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListProfiles from '../pages/ListProfiles';
 import ListCompanies from '../pages/ListCompanies';
+import AddProfile from '../pages/AddProfile';
+import AddCompany from '../pages/AddCompany';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -29,6 +31,8 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/home" component={Homepage}/>
+            <ProtectedRoute path="/add" component={AddProfile}/>
+            <ProtectedRoute path="/add2" component={AddCompany}/>
             <ProtectedRoute path="/list" component={ListProfiles}/>
             <ProtectedRoute path="/list2" component={ListCompanies}/>
             <ProtectedRoute path="/search" component={SearchPage}/>

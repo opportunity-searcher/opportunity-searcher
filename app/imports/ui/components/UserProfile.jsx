@@ -12,7 +12,7 @@ class UserProfile extends React.Component {
         <Card.Content>
           <Card.Header>{this.props.userprofile.name}</Card.Header>
           <Card.Meta>
-            <span className='date'>{this.props.userprofile.address}</span>
+            <span className='date'>{this.props.userprofile.location}</span>
           </Card.Meta>
           <Card.Description>
             {this.props.userprofile.description}
@@ -28,8 +28,9 @@ UserProfile.propTypes = {
   userprofile: PropTypes.shape({
     name: PropTypes.string,
     image: PropTypes.string,
-    address: PropTypes.string,
+    location: PropTypes.string,
     description: PropTypes.string,
+    skills: PropTypes.string,
   }).isRequired,
 };
 

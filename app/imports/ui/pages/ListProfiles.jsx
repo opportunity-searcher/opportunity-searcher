@@ -9,21 +9,6 @@ import UserProfile from '../components/UserProfile';
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListProfiles extends React.Component {
 
-  users = [
-    {
-      name: 'Matthew Ito', address: 'Los Angeles', image: 'https://avatars.githubusercontent.com/u/71101234?v=4',
-      description: 'UH Manoa student studying ICS and Japanese.',
-    },
-    {
-      name: 'Kegan Flagg', address: 'Honolulu', image: 'https://avatars.githubusercontent.com/u/43965971?v=4',
-      description: 'UH Manoa student studying ICS and Japanese.',
-    },
-    {
-      name: 'Jay Paul Luben', address: 'Honolulu', image: 'https://avatars.githubusercontent.com/u/49574660?v=4',
-      description: 'UH Manoa student studying ICS and Japanese.',
-    },
-  ];
-
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -35,7 +20,7 @@ class ListProfiles extends React.Component {
       <Container>
         <Header as="h2" textAlign="center">List Profiles</Header>
         <Card.Group>
-          {this.users.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />)}
+          {this.props.profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />)}
         </Card.Group>
       </Container>
     );
