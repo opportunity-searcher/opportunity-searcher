@@ -9,7 +9,11 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListProfiles from '../pages/ListProfiles';
 import ListCompanies from '../pages/ListCompanies';
+import ListProfilesAdmin from '../pages/ListProfilesAdmin';
+import ListCompaniesAdmin from '../pages/ListCompaniesAdmin';
 import AddProfile from '../pages/AddProfile';
+import EditProfile from '../pages/EditProfile';
+import EditCompany from '../pages/EditCompany';
 import AddCompany from '../pages/AddCompany';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -33,8 +37,12 @@ class App extends React.Component {
             <ProtectedRoute path="/home" component={Homepage}/>
             <ProtectedRoute path="/add" component={AddProfile}/>
             <ProtectedRoute path="/add2" component={AddCompany}/>
+            <AdminProtectedRoute path="/edit/:_id" component={EditProfile}/>
+            <AdminProtectedRoute path="/edit2/:_id" component={EditCompany}/>
             <ProtectedRoute path="/list" component={ListProfiles}/>
             <ProtectedRoute path="/list2" component={ListCompanies}/>
+            <AdminProtectedRoute path="/admin" component={ListProfilesAdmin}/>
+            <AdminProtectedRoute path="/admin2" component={ListCompaniesAdmin}/>
             <ProtectedRoute path="/search" component={SearchPage}/>
             <Route component={NotFound}/>
           </Switch>
