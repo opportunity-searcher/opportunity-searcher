@@ -5,7 +5,7 @@ import { Grid, Header } from 'semantic-ui-react';
 class Landing extends React.Component {
   render() {
     return (
-      <div className='digits-landing-background'>
+      <div className='opportunities-landing-background'>
         <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
 
           <Grid.Column textAlign='center' >
