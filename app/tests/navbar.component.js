@@ -36,6 +36,11 @@ class NavBar {
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-up');
   }
+
+  async gotoSearchPage(testController) {
+    await testController.click('#search-nav');
+  }
+
 }
 
 export const navBar = new NavBar();
