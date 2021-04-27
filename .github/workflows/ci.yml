@@ -1,5 +1,4 @@
-name: ci-meteor-application-template-react
-
+name: ci-opportunity-searcher
 on:
   push:
     branches:
