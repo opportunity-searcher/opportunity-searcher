@@ -5,7 +5,7 @@ import { Grid, Header, Icon } from 'semantic-ui-react';
 class Homepage extends React.Component {
   render() {
     return (
-      <div className='opportunities-landing-background'>
+      <div className='opportunities-landing-background' id="home-page">
         <Header textAlign='center' as='h1' color='grey'>Get started on your search</Header>
         <Grid id='home-page' verticalAlign='middle' textAlign='center' container columns={2}>
 
