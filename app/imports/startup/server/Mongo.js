@@ -12,7 +12,7 @@ function addProfiles(data) {
 
 // Initialize the StuffsCollection if empty.
 if (Profiles.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultProfiles) {
     console.log('Creating default data.');
     Meteor.settings.defaultProfiles.map(data => addProfiles(data));
   }
@@ -26,7 +26,7 @@ function addCompanies(data) {
 
 // Initialize the StuffsCollection if empty.
 if (Companies.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultCompanies) {
     console.log('Creating default data.');
     Meteor.settings.defaultCompanies.map(data => addCompanies(data));
   }
