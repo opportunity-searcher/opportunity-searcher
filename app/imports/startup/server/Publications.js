@@ -3,12 +3,11 @@ import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/Profiles';
 import { Companies } from '../../api/company/Companies';
 
-// User-level publication.
-// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+// any-level publication.
+// If logged in, then publish documents owned by any user. Otherwise publish nothing.
 Meteor.publish(Profiles.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Profiles.collection.find({ owner: username });
+    return Profiles.collection.find();
   }
   return this.ready();
 });
@@ -26,8 +25,7 @@ Meteor.publish(Profiles.adminPublicationName, function () {
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Companies.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Companies.collection.find({ owner: username });
+    return Companies.collection.find();
   }
   return this.ready();
 });
