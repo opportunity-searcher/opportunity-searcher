@@ -1,98 +1,56 @@
 import { _ } from 'meteor/underscore';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Search, Container, Divider, Header, Card } from 'semantic-ui-react';
+import { Container, Loader, Card, Form, Header } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Profiles } from '../../api/profile/Profiles';
 import UserProfile from '../components/UserProfile';
-
-const users = [
-  {
-    name: 'Matthew Ito', address: 'Los Angeles', image: 'https://avatars.githubusercontent.com/u/71101234?v=4',
-    description: 'UH Manoa student studying ICS and Japanese.',
-  },
-  {
-    name: 'Google', address: '1600 Amphitheatre Parkway', image: 'https://www.tripsavvy.com/thmb/oOoIxfAquiM7PBa_sDMXNdo_wtk=/2416x1600/filters:fill(auto,1)/how-to-visit-the-googleplex-google-hq-mountain-view-57e2d4515f9b586c3529ba9c.jpg',
-    description: 'We are currently hiring interns and part-time software engineers.',
-  },
-];
+import { Companies } from '../../api/company/Companies';
+import CompanyProfile from '../components/CompanyProfile';
 
 const initialState = { isLoading: false, results: [], value: '' };
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class SearchPage extends React.Component {
-    state = initialState
+  state = initialState
 
-    handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+  state = { name: '' }
 
-  handleSearchChange = (e, { value }) => {
-    this.setState({ isLoading: true, value });
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-    setTimeout(() => {
-      if (this.state.value.length < 1) return this.setState(initialState);
-
-      const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
-      const isMatch = (result) => re.test(result.name);
-
-      this.setState({
-        isLoading: false,
-        results: _.filter(users, isMatch),
-      });
-    }, 300);
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+  render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    const { isLoading, value, results } = this.state;
+  // Render the page once subscriptions have been received.
+  renderPage() {
+    const { name } = this.state;
+    const profiles = _.filter(Profiles.collection.find().fetch(), function (profile) { return profile.name.toUpperCase().includes(name.toUpperCase()); });
+    const companies = _.filter(Companies.collection.find().fetch(), function (company) { return company.name.toUpperCase().includes(name.toUpperCase()); });
 
     return (
       <Container>
         <Header as="h2" textAlign="center">Search Profiles or Companies</Header>
-        <Container textSize="large" textAlign="center">
-          <Search
-            size="huge"
-            input={{ icon: 'search', iconPosition: 'right' }}
-            loading={isLoading}
-            onResultSelect={this.handleResultSelect}
-            onSearchChange={_.debounce(this.handleSearchChange, 500, {
-              leading: true,
-            })}
-            results={results}
-            value={value}
-          />
-        </Container>
-        <Divider/>
+        <Form size='huge' textAlign="center">
+          <Form.Group widths='equal'>
+            <Form.Input
+              placeholder='Search'
+              name='name'
+              value={name}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+        </Form>
         <Card.Group>
-          {users.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />)}
+          {profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />)}
+          {companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} />)}
         </Card.Group>
+
       </Container>
     );
-
-    // return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
-
-  // Render the page once subscriptions have been received.
-/*   renderPage() {
-
-    return (
-      <Container>
-        <Search
-          input={{ icon: 'search', iconPosition: 'left' }}
-          loading={isLoading}
-          onResultSelect={this.handleResultSelect}
-          onSearchChange={_.debounce(this.handleSearchChange, 500, {
-            leading: true,
-          })}
-          results={results}
-          value={value}
-        />
-        <Card.Group>
-          {users.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />)}
-        </Card.Group>
-      </Container>
-    );
-  } */
 }
 
 // Require an array of Stuff documents in the props.
@@ -105,12 +63,14 @@ SearchPage.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Profiles.userPublicationName);
-  // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const subscription2 = Meteor.subscribe(Companies.userPublicationName);
+
   // Get the Stuff documents
   const profiles = Profiles.collection.find({}).fetch();
+  const companies = Companies.collection.find({}).fetch();
   return {
     profiles,
-    ready,
+    companies,
+    ready: subscription.ready() && subscription2.ready(),
   };
 })(SearchPage);
