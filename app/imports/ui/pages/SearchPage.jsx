@@ -31,7 +31,7 @@ class SearchPage extends React.Component {
     const companies = _.filter(Companies.collection.find().fetch(), function (company) { return company.name.toUpperCase().includes(name.toUpperCase()); });
 
     return (
-      <Container>
+      <Container id='search-page'>
         <Header as="h2" textAlign="center">Search Profiles or Companies</Header>
         <Form size='huge' textAlign="center">
           <Form.Group widths='equal'>
