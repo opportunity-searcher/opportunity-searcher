@@ -19,7 +19,7 @@ class CompanyProfileAdmin extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/edit2/${this.props.companyprofile._id}`}>Edit</Link>
+          <Link to={`/edit2/${this.props.companyprofile}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
