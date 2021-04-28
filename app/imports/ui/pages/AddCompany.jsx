@@ -45,12 +45,12 @@ class AddCompany extends React.Component {
           <Header as="h2" textAlign="center">Add Company</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <TextField name='location'/>
-              <TextField name='image'/>
-              <LongTextField name='description'/>
-              <TextField name='skills'/>
-              <SubmitField value='Submit'/>
+              <TextField name='name' id="company-name"/>
+              <TextField name='location' id="company-location"/>
+              <TextField name='image' id="company-image"/>
+              <LongTextField name='description' id="company-description"/>
+              <TextField name='skills' id="company-skills"/>
+              <SubmitField value='Submit' id="company-submit"/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

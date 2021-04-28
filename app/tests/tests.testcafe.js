@@ -64,6 +64,7 @@ test('Test the Add Profile page', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddProfilePage(testController);
   await addProfilePage.isDisplayed(testController);
+  await addProfilePage.fillForm(testController);
 });
 
 test('Test the Add Company page', async (testController) => {
@@ -71,6 +72,7 @@ test('Test the Add Company page', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddCompanyPage(testController);
   await addCompanyPage.isDisplayed(testController);
+  await addCompanyPage.fillForm(testController);
 });
 
 /*
