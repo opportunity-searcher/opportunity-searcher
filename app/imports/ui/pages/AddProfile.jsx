@@ -45,12 +45,12 @@ class AddProfile extends React.Component {
           <Header as="h2" textAlign="center">Add Profile</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <TextField name='location'/>
-              <TextField name='image'/>
-              <LongTextField name='description'/>
-              <TextField name='skills'/>
-              <SubmitField value='Submit'/>
+              <TextField name='name' id="profile-name"/>
+              <TextField name='location' id="profile-location"/>
+              <TextField name='image' id="profile-image"/>
+              <LongTextField name='description' id="profile-description"/>
+              <TextField name='skills' id="profile-skills"/>
+              <SubmitField value='Submit' id="profile-submit"/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

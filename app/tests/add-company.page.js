@@ -10,6 +10,16 @@ class AddCompanyPage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
+
+  async fillForm(testController) {
+    await this.isDisplayed(testController);
+    await testController.typeText('#company-name', 'a');
+    await testController.typeText('#company-location', 'a');
+    await testController.typeText('#company-image', 'a');
+    await testController.typeText('#company-description', 'a');
+    await testController.typeText('#company-skills', 'a');
+    await testController.click('#company-submit');
+  }
 }
 
 export const addCompanyPage = new AddCompanyPage();
