@@ -17,16 +17,29 @@ class NavBar extends React.Component {
         </Menu.Item>
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home' id="home-nav">Home Page</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id="add-nav">Add Profile</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/add2" key='add2' id="add2-nav">Add Company</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list' id="list-nav">List Profiles</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/list2" key='list2' id="list2-nav">List Companies</Menu.Item>,
+            <Dropdown item key="add-drop" text="Add">
+              <Dropdown.Menu>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id="add-nav">Add Profile</Dropdown.Item>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add2" key='add2' id="add2-nav">Add Company</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>,
+
+            <Dropdown item key="list-drop" text="List">
+              <Dropdown.Menu>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/list" key='list' id="list-nav">List Profiles</Dropdown.Item>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/list2" key='list2' id="list2-nav">List Companies</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>,
             <Menu.Item as={NavLink} activeClassName="active" exact to="/search" key='search' id="search-nav">Search</Menu.Item>,
           ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-          [<Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin Profiles</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/admin2" key='admin'>Admin Companies</Menu.Item>,
+          [<Dropdown item key="admin-list-drop" text="Admin List">
+            <Dropdown.Menu>
+              <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin Profiles</Dropdown.Item>
+              <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin2" key='admin'>Admin Companies</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>,
           ]
         ) : ''}
         <Menu.Item position="right">
