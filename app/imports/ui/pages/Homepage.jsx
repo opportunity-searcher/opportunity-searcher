@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
-import { Grid, Header, Icon, Button, Container, Card } from 'semantic-ui-react';
+import { Grid, Header, Icon, Button, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -12,7 +12,6 @@ import CompanyProfile from '../components/CompanyProfile';
 
 /** A simple static component to render some text for the landing page. */
 class Homepage extends React.Component {
-
   render() {
     return (
       <div className='opportunities-landing-background' id="home-page">
@@ -37,27 +36,19 @@ class Homepage extends React.Component {
           </Grid.Column>
         </Grid>
 
-        <Grid id='home-page' verticalAlign='middle' textAlign='center' container columns={1}>
-          <Grid.Column textAlign='center'>
-            <Container>
-              <Header as="h2" textAlign="center">Members of the Week</Header>
-              <Card.Group>
-                {this.props.profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />)}
-              </Card.Group>
-            </Container>
-          </Grid.Column>
-        </Grid>
+        <Container>
+          <Header as="h2" textAlign="center">Member of the Day!</Header>
+          <div class="ui centered card">
+            {_.sample(this.props.profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />))}
+          </div>
+        </Container>
 
-        <Grid id='home-page' verticalAlign='middle' textAlign='center' container columns={1}>
-          <Grid.Column textAlign='center'>
-            <Container>
-              <Header as="h2" textAlign="center">Companies of the Week</Header>
-              <Card.Group>
-                {this.props.companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} />)}
-              </Card.Group>
-            </Container>
-          </Grid.Column>
-        </Grid>
+        <Container>
+          <Header as="h2" textAlign="center">Company of the Day!</Header>
+          <div class="ui centered card">
+            {_.sample(this.props.companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} />))}
+          </div>
+        </Container>
 
       </div>
     );
@@ -79,8 +70,8 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready() && subscription2.ready();
   // Get the Profile and Company documents
-  const profiles = Profiles.collection.find({}).fetch();
-  const companies = Companies.collection.find({}).fetch();
+  const profiles = (Profiles.collection.find({}).fetch());
+  const companies = (Companies.collection.find({}).fetch());
   return {
     profiles,
     companies,
