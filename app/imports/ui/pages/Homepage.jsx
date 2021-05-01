@@ -36,19 +36,26 @@ class Homepage extends React.Component {
           </Grid.Column>
         </Grid>
 
-        <Container>
-          <Header as="h2" textAlign="center">Member of the Day!</Header>
-          <div class="ui centered card">
-            {_.sample(this.props.profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />))}
-          </div>
-        </Container>
+        <Grid id='home-page' verticalAlign='middle' textAlign='center' container columns={2}>
+          <Grid.Column>
+            <Container>
+              <Header as="h2" textAlign="center">Member of the Day!</Header>
+              <div class="ui centered card">
+              {_.sample(this.props.profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />))}
+              </div>
+            </Container>
+          </Grid.Column>
 
-        <Container>
-          <Header as="h2" textAlign="center">Company of the Day!</Header>
-          <div class="ui centered card">
-            {_.sample(this.props.companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} />))}
-          </div>
-        </Container>
+          <Grid.Column>
+            <Container>
+              <Header as="h2" textAlign="center">Company of the Day!</Header>
+              <div class="ui centered card">
+              {_.sample(this.props.companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} />))}
+              </div>
+            </Container>
+          </Grid.Column>
+
+        </Grid>
 
       </div>
     );
