@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Loader } from 'semantic-ui-react';
+import { Grid, Header, Button, Image, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Profiles } from '../../api/profile/Profiles';
@@ -16,18 +16,25 @@ class ProfileDetailTest extends React.Component {
     const profile = this.props.profiles.find(item => item._id === userId);
 
     return (
-      <Card>
-        <Image src={profile.image} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header>{profile.name}</Card.Header>
-          <Card.Meta>
-            <span className='date'>{profile.location}</span>
-          </Card.Meta>
-          <Card.Description>
-            {profile.description}
-          </Card.Description>
-        </Card.Content>
-      </Card>
+      <Grid textAlign='center' style={{ height: '100vh' }} >
+        <Grid.Column style={{ maxWidth: 650 }}>
+          <Header as="h1" textAlign="center">{profile.name}</Header>
+          <Image
+            floated='right'
+            size='medium'
+            src={profile.image}
+            style={{ margin: '2em -4em 2em 2em' }} />
+
+          <Header as="h3" textAlign="center">Address</Header>
+          <p>{profile.location}</p>
+          <Header as="h3" textAlign="center">About me</Header>
+          <p>{profile.description}</p>
+          <Header as="h3" textAlign="center">My Skills</Header>
+          <p>{profile.skills}</p>
+          <Button>Contact Me</Button>
+        </Grid.Column>
+      </Grid>
+
     );
   }
 

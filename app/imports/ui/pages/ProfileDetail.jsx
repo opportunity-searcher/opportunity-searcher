@@ -1,49 +1,37 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Loader } from 'semantic-ui-react';
+import { Grid, Image, Loader, Header, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Profiles } from '../../api/profile/Profiles';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders the first profile associated with the current user. */
 class ProfileDetail extends React.Component {
   render() {
-    if (this.props.ready) {
-      return (this.props.location.pathname === '/mydetail') ? this.renderUser() : this.renderNotUser();
-    }
-    return <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
-  renderNotUser() {
+  renderPage() {
     return (
-      <Card>
-        <Image src={this.props.location.state.profile.image} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header>{this.props.location.state.profile.name}</Card.Header>
-          <Card.Meta>
-            <span className='date'>{this.props.location.state.profile.location}</span>
-          </Card.Meta>
-          <Card.Description>
-            {this.props.location.state.profile.description}
-          </Card.Description>
-        </Card.Content>
-      </Card>);
-  }
+      <Grid textAlign='center' style={{ height: '100vh' }} >
+        <Grid.Column style={{ maxWidth: 650 }}>
+          <Header as="h1" textAlign="center">{this.props.profile.name}</Header>
+          <Image
+            floated='right'
+            size='medium'
+            src={this.props.profile.image}
+            style={{ margin: '2em -4em 2em 2em' }} />
 
-  renderUser() {
-    return (
-      <Card>
-        <Image src={this.props.profile.image} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header>{this.props.profile.name}</Card.Header>
-          <Card.Meta>
-            <span className='date'>{this.props.profile.location}</span>
-          </Card.Meta>
-          <Card.Description>
-            {this.props.profile.description}
-          </Card.Description>
-        </Card.Content>
-      </Card>
+          <Header as="h3" textAlign="center">Address</Header>
+          <p>{this.props.profile.location}</p>
+          <Header as="h3" textAlign="center">About me</Header>
+          <p>{this.props.profile.description}</p>
+          <Header as="h3" textAlign="center">My Skills</Header>
+          <p>{this.props.profile.skills}</p>
+          <Button as={Link} to={`/edit/${this.props.profile._id}`}>Edit</Button>
+        </Grid.Column>
+      </Grid>
     );
   }
 
