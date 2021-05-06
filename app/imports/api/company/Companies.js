@@ -20,6 +20,7 @@ class CompaniesCollection {
       // skills is currently a string but should be a list of strings (probably)
       skills: String,
       owner: String,
+      email: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

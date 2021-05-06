@@ -31,6 +31,7 @@ CompanyProfile.propTypes = {
     location: PropTypes.string,
     description: PropTypes.string,
     skills: PropTypes.string,
+    email: PropTypes.string,
   }).isRequired,
 };
 
