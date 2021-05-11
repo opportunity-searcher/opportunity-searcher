@@ -22,13 +22,6 @@ class NavBar extends React.Component {
         </Menu.Item>
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home' id="home-nav">Home Page</Menu.Item>,
-            <Dropdown item key="add-drop" text="Add">
-              <Dropdown.Menu>
-                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id="add-nav">Add Profile</Dropdown.Item>
-                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add2" key='add2' id="add2-nav">Add Company</Dropdown.Item>
-                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addinit" key='addinit' id="add2-nav">Add Initial</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>,
 
             <Dropdown item key="list-drop" text="List">
               <Dropdown.Menu>
@@ -47,10 +40,12 @@ class NavBar extends React.Component {
           ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-          [<Dropdown item key="admin-list-drop" text="Admin List">
+          [<Dropdown item key="admin-list-drop" text="Admin">
             <Dropdown.Menu>
               <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin Profiles</Dropdown.Item>
               <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin2" key='admin'>Admin Companies</Dropdown.Item>
+              <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id="add-nav">Add Profile</Dropdown.Item>
+              <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add2" key='add2' id="add2-nav">Add Company</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>,
           ]
@@ -66,8 +61,12 @@ class NavBar extends React.Component {
           ) : (
             <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
-                <Dropdown.Item id="navbar-detail" icon="file" text="My Profile" as={NavLink} exact to={this.location}/>
-                <Dropdown.Item id="navbar-detail" icon="file" text="My Company" as={NavLink} exact to="/mycompany"/>
+                {Roles.userIsInRole(Meteor.userId(), 'student') ? (
+                  <Dropdown.Item id="navbar-detail" icon="file" text="My Profile" as={NavLink} exact to={this.location}/>) : ''}
+                {Roles.userIsInRole(Meteor.userId(), 'company') ? (
+                  <Dropdown.Item id="navbar-detail" icon="file" text="My Company" as={NavLink} exact to="/mycompany"/>) : ''}
+                {!Roles.userIsInRole(Meteor.userId(), 'company') && !Roles.userIsInRole(Meteor.userId(), 'student') ? (
+                  <Dropdown.Item id="navbar-detail" icon="file" text="Finish Profile" as={NavLink} exact to="/addinit"/>) : ''}
                 <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
               </Dropdown.Menu>
             </Dropdown>
