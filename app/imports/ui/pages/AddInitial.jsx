@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Profiles } from '../../api/profile/Profiles';
+import { Companies } from '../../api/company/Companies';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -26,16 +27,32 @@ class AddInitial extends React.Component {
   submit(data, formRef) {
     const { name, location, image, description, skills, role } = data;
     const owner = Meteor.user().username;
-    Profiles.collection.insert({ name, location, image, description, skills, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          Meteor.subscribe('assignUserToRole', [role]);
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      });
+
+    if (role === 'student') {
+      Profiles.collection.insert({ name, location, image, description, skills, owner },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            Meteor.subscribe('assignUserToRole', [role]);
+            swal('Success', 'Item added successfully', 'success');
+            formRef.reset();
+          }
+        });
+    }
+
+    if (role === 'company') {
+      Companies.collection.insert({ name, location, image, description, skills, owner },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            Meteor.subscribe('assignUserToRole', [role]);
+            swal('Success', 'Item added successfully', 'success');
+            formRef.reset();
+          }
+        });
+    }
 
   }
 
