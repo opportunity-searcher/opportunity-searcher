@@ -21,7 +21,9 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Homepage from '../pages/Homepage';
-import SearchPage from '../pages/SearchPage';
+import SearchSkills from '../pages/SearchSkills';
+import SearchProfile from '../pages/SearchProfile';
+import SearchCompany from '../pages/SearchCompany';
 import MyProfileDetail from '../pages/MyProfileDetail';
 import ProfileDetail from '../pages/ProfileDetail';
 import CompanyDetail from '../pages/CompanyDetail';
@@ -53,7 +55,9 @@ class App extends React.Component {
             <ProtectedRoute path="/list2" component={ListCompanies}/>
             <AdminProtectedRoute path="/admin" component={ListProfilesAdmin}/>
             <AdminProtectedRoute path="/admin2" component={ListCompaniesAdmin}/>
-            <ProtectedRoute path="/search" component={SearchPage}/>
+            <ProtectedRoute path="/search-profile" component={SearchProfile}/>
+            <ProtectedRoute path="/search-company" component={SearchCompany}/>
+            <ProtectedRoute path="/search-skills" component={SearchSkills}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
