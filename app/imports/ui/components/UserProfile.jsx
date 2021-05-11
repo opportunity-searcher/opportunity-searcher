@@ -17,6 +17,9 @@ class UserProfile extends React.Component {
           <Card.Description>
             {this.props.userprofile.description}
           </Card.Description>
+          <h5>
+            Skills: {this.props.userprofile.skills}
+          </h5>
         </Card.Content>
       </Card>
     );

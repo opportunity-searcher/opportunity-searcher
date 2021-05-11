@@ -17,6 +17,9 @@ class CompanyProfile extends React.Component {
           <Card.Description>
             {this.props.companyprofile.description}
           </Card.Description>
+          <h5>
+            Skills: {this.props.companyprofile.skills}
+          </h5>
         </Card.Content>
       </Card>
     );
