@@ -7,6 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Profiles } from '../../api/profile/Profiles';
+import { Roles } from 'meteor/alanning:roles';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
@@ -24,11 +25,13 @@ class EditProfile extends React.Component {
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     if (this.props.ready) {
-      return this.props.doesOwn ? this.renderPage() : <Header textAlign="center" >Oops! You don&apos;t have permission to edit this profile</Header>;
+      return (this.props.doesOwn || this.props.isAdmin) ? this.renderPage() :
+          <Header textAlign="center">Oops! You don&apos;t have permission to edit this profile</Header>;
     }
 
     return <Loader active>Getting data</Loader>;
   }
+
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
@@ -60,6 +63,7 @@ EditProfile.propTypes = {
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
   doesOwn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -74,9 +78,12 @@ export default withTracker(({ match }) => {
   const doc = Profiles.collection.findOne(documentId);
 
   const doesOwn = doc.owner === Meteor.user().username;
+
+  const isAdmin = Roles.userIsInRole(Meteor.user(), ['admin']);
   return {
     doc,
     ready,
     doesOwn,
+    isAdmin,
   };
 })(EditProfile);
