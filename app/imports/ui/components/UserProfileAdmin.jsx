@@ -19,7 +19,7 @@ class UserProfileAdmin extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/edit/${this.props.userprofile}`}>Edit</Link>
+          <Link to={`/edit/${this.props.userprofile._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
@@ -34,6 +34,7 @@ UserProfileAdmin.propTypes = {
     location: PropTypes.string,
     description: PropTypes.string,
     skills: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Grid, Image, Loader, Header, Button } from 'semantic-ui-react';
+import { Grid, Image, Loader, Header, Button, Redirect } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,7 +9,11 @@ import { Companies } from '../../api/company/Companies';
 /** Renders the first profile associated with the current user. */
 class MyCompanyDetail extends React.Component {
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    if (this.props.ready) {
+      return this.props.company ? this.renderPage() : <Redirect to='/addinit'/>;
+    }
+
+    return <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
