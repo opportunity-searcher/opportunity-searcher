@@ -9,21 +9,20 @@
     { "email": "john@foo.com", "password": "changeme", "role": "student" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
 
   "defaultProfiles": [
     { "name": "Matthew Ito", "owner": "john@foo.com", "location": "Los Angeles", "image": "https://avatars.githubusercontent.com/u/71101234?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Javascript"},
+    { "name": "Kegan Flagg", "owner": "john@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/43965971?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Rust"},
     { "name": "Kegan Flagg", "owner": "john@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/43965971?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Rust"},
     { "name": "Jay Paul Luben", "owner": "greg@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/49574660?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Kali Linux"}
   ],
 
   "defaultCompanies": [
-    { "name": "Google", "location": "1600 Ampitheatre Parkway", "image": "https://www.tripsavvy.com/thmb/oOoIxfAquiM7PBa_sDMXNdo_wtk=/2416x1600/filters:fill(auto,1)/how-to-visit-the-googleplex-google-hq-mountain-view-57e2d4515f9b586c3529ba9c.jpg", "description": "Small software company looking to make a splash in the tech world.", "skills": "Java, Ruby, Rust", "owner": "john@foo.com"},
+    { "name": "Google", "location": "Mountain View, California", "image": "https://www.tripsavvy.com/thmb/oOoIxfAquiM7PBa_sDMXNdo_wtk=/2416x1600/filters:fill(auto,1)/how-to-visit-the-googleplex-google-hq-mountain-view-57e2d4515f9b586c3529ba9c.jpg", "description": "Small software company looking to make a splash in the tech world.", "skills": "Java, Ruby, Rust", "owner": "john@foo.com"},
+    { "name": "Sony", "location": "Tokyo, Japan", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Sony_headquarters_%28crop%29.jpg/1024px-Sony_headquarters_%28crop%29.jpg", "description": "A company that's only known for their video games.", "skills": "Java, HTML5, Game Development", "owner": "john@foo.com"},
+    { "name": "CD Projekt Red", "location": "Warsaw, Poland", "image": "https://i.imgur.com/TNUmH2s.jpeg", "description": "Small indie game company known for their best game Cyberpunk 2077.", "skills": "RED Engine, Game Development" ,"owner": "john@foo.com"},
+    { "name": "Epic Games", "location": "Cary, North Carolina", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Epic_Games_office.jpg/1920px-Epic_Games_office.jpg", "description": "Gaming company known for their multiple Battle Royale titles such as Fortnite.", "skills": "Unreal Engine, Game Development" ,"owner": "john@foo.com"},
+    { "name": "Mediatonic", "location": "Uxbridge, United Kingdom", "image": "https://d1x3t653etfkkb.cloudfront.net/landscape-media-carousel/_size1920x1080/PhilBean1.png", "description": "Gaming company taking over the world with their fun games such as Fall Guys.", "skills": "Unity, Game Development" ,"owner": "john@foo.com"},
     { "name": "Microsoft", "location": "Redmond, WA", "image": "https://s3-ap-southeast-2.amazonaws.com/casfawsbucket/casf/wp-content/uploads/2017/06/14130650/DuPont-Corian_Microsoft-FI-Foto-Andreas-Frisch-GSP-architekten-1080x640.jpg", "description": "The company that developed Visual Studio Code.", "skills": "Java, C#, Rust", "owner": "john@foo.com" }
   ]
 }
