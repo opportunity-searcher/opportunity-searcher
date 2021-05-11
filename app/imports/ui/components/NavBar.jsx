@@ -26,6 +26,7 @@ class NavBar extends React.Component {
               <Dropdown.Menu>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id="add-nav">Add Profile</Dropdown.Item>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/add2" key='add2' id="add2-nav">Add Company</Dropdown.Item>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addinit" key='addinit' id="add2-nav">Add Initial</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>,
 

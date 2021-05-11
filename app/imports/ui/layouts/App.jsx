@@ -12,6 +12,7 @@ import ListCompanies from '../pages/ListCompanies';
 import ListProfilesAdmin from '../pages/ListProfilesAdmin';
 import ListCompaniesAdmin from '../pages/ListCompaniesAdmin';
 import AddProfile from '../pages/AddProfile';
+import AddInitial from '../pages/AddInitial';
 import EditProfile from '../pages/EditProfile';
 import EditCompany from '../pages/EditCompany';
 import AddCompany from '../pages/AddCompany';
@@ -45,6 +46,7 @@ class App extends React.Component {
             <ProtectedRoute path="/mycompany" component={MyCompanyDetail}/>
             <ProtectedRoute path="/add" component={AddProfile}/>
             <ProtectedRoute path="/add2" component={AddCompany}/>
+            <ProtectedRoute path="/addinit" component={AddInitial}/>
             <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
             <ProtectedRoute path="/edit2/:_id" component={EditCompany}/>
             <ProtectedRoute path="/list" component={ListProfiles}/>

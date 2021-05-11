@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { _ } from 'meteor/underscore';
 import { Grid, Header, Icon, Button, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -15,7 +16,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className='opportunities-landing-background' id="home-page">
-        <Header size='huge' textAlign='center' color='black'>Opportunity Searcher</Header>
+        <Header size='huge' textAlign='center' color='black'> Opportunity Searcher {this.props.user ? 'yoo' : 'noo'} </Header>
 
         <Grid id='home-page' verticalAlign='middle' textAlign='center' container columns={2}>
 
@@ -67,10 +68,12 @@ Homepage.propTypes = {
   profiles: PropTypes.array.isRequired,
   companies: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  user: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
+  const user = Meteor.user() ? Roles.userIsInRole(Meteor.userId(), 'student') : true;
   // Get access to Profile and Company documents.
   const subscription = Meteor.subscribe(Profiles.userPublicationName);
   const subscription2 = Meteor.subscribe(Companies.userPublicationName);
@@ -83,5 +86,6 @@ export default withTracker(() => {
     profiles,
     companies,
     ready,
+    user,
   };
 })(Homepage);
