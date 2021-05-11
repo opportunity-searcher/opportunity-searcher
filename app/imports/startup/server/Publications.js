@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/Profiles';
 import { Companies } from '../../api/company/Companies';
@@ -46,4 +47,15 @@ Meteor.publish(null, function () {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
   }
   return this.ready();
+});
+
+Meteor.publish('assignUserToRole', function (roles) {
+  check(roles, Array);
+
+  Roles.createRole(roles[0], { unlessExists: true });
+
+  Roles.addUsersToRoles(this.userId, roles);
+
+  return '';
+
 });
