@@ -1,40 +1,37 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Grid, Header, Button, Image, Loader } from 'semantic-ui-react';
+import { Grid, Image, Loader, Header, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Profiles } from '../../api/profile/Profiles';
+import { Companies } from '../../api/company/Companies';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class ProfileDetailTest extends React.Component {
+/** Renders the first profile associated with the current user. */
+class MyCompanyDetail extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    const userId = this.props.location.pathname.replace('/detail/', '');
-    const profile = this.props.profiles.find(item => item._id === userId);
-
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} >
         <Grid.Column style={{ maxWidth: 650 }}>
-          <Header as="h1" textAlign="center">{profile.name}</Header>
+          <Header as="h1" textAlign="center">{this.props.company.name}</Header>
           <Image
             floated='right'
             size='medium'
-            src={profile.image}
+            src={this.props.company.image}
             style={{ margin: '2em -4em 2em 2em' }} />
 
           <Header as="h3" textAlign="center">Address</Header>
-          <p>{profile.location}</p>
+          <p>{this.props.company.location}</p>
           <Header as="h3" textAlign="center">About me</Header>
-          <p>{profile.description}</p>
+          <p>{this.props.company.description}</p>
           <Header as="h3" textAlign="center">My Skills</Header>
-          <p>{profile.skills}</p>
-          <Button>Contact Me</Button>
+          <p>{this.props.company.skills}</p>
+          <Button as={Link} to={`/edit2/${this.props.company._id}`}>Edit</Button>
         </Grid.Column>
       </Grid>
-
     );
   }
 
@@ -51,24 +48,24 @@ class ProfileDetailTest extends React.Component {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Profiles.userPublicationName);
+  const subscription = Meteor.subscribe(Companies.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const profiles = Profiles.collection.find({}).fetch();
+  const company = Companies.collection.find({ owner: Meteor.user() ? Meteor.user().username : '' }).fetch()[0];
   return {
-    profiles,
+    company,
     ready,
   };
-})(ProfileDetailTest);
+})(MyCompanyDetail);
 
 // Require a document to be passed to this component.
-ProfileDetailTest.propTypes = {
+MyCompanyDetail.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
     state: PropTypes.Object,
   }),
-  profiles: PropTypes.array.isRequired,
+  company: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
   /* PropTypes.shape({
     name: PropTypes.string,

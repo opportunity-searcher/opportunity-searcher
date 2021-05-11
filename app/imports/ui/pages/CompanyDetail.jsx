@@ -3,17 +3,17 @@ import { Meteor } from 'meteor/meteor';
 import { Grid, Header, Button, Image, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Profiles } from '../../api/profile/Profiles';
+import { Companies } from '../../api/company/Companies';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class ProfileDetail extends React.Component {
+class CompanyDetail extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    const userId = this.props.location.pathname.replace('/detail/', '');
-    const profile = this.props.profiles.find(item => item._id === userId);
+    const userId = this.props.location.pathname.replace('/companydetail/', '');
+    const profile = this.props.companies.find(item => item._id === userId);
 
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} >
@@ -51,24 +51,24 @@ class ProfileDetail extends React.Component {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Profiles.userPublicationName);
+  const subscription = Meteor.subscribe(Companies.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const profiles = Profiles.collection.find({}).fetch();
+  const companies = Companies.collection.find({}).fetch();
   return {
-    profiles,
+    companies,
     ready,
   };
-})(ProfileDetail);
+})(CompanyDetail);
 
 // Require a document to be passed to this component.
-ProfileDetail.propTypes = {
+CompanyDetail.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
     state: PropTypes.Object,
   }),
-  profiles: PropTypes.array.isRequired,
+  companies: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
   /* PropTypes.shape({
     name: PropTypes.string,
