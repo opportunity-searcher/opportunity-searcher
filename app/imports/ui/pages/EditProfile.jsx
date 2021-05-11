@@ -23,7 +23,11 @@ class EditProfile extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    if (this.props.ready) {
+      return this.props.doesOwn ? this.renderPage() : <Header textAlign="center" >Oops! You don&apos;t have permission to edit this profile</Header>;
+    }
+
+    return <Loader active>Getting data</Loader>;
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
@@ -55,6 +59,7 @@ EditProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
+  doesOwn: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -62,13 +67,16 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Profiles.adminPublicationName);
+  const subscription = Meteor.subscribe(Profiles.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the document
   const doc = Profiles.collection.findOne(documentId);
+
+  const doesOwn = doc.owner === Meteor.user().username;
   return {
     doc,
     ready,
+    doesOwn,
   };
 })(EditProfile);

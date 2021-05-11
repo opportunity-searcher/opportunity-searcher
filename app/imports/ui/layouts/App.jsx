@@ -12,6 +12,7 @@ import ListCompanies from '../pages/ListCompanies';
 import ListProfilesAdmin from '../pages/ListProfilesAdmin';
 import ListCompaniesAdmin from '../pages/ListCompaniesAdmin';
 import AddProfile from '../pages/AddProfile';
+import AddInitial from '../pages/AddInitial';
 import EditProfile from '../pages/EditProfile';
 import EditCompany from '../pages/EditCompany';
 import AddCompany from '../pages/AddCompany';
@@ -23,6 +24,10 @@ import Homepage from '../pages/Homepage';
 import SearchSkills from '../pages/SearchSkills';
 import SearchProfile from '../pages/SearchProfile';
 import SearchCompany from '../pages/SearchCompany';
+import MyProfileDetail from '../pages/MyProfileDetail';
+import ProfileDetail from '../pages/ProfileDetail';
+import CompanyDetail from '../pages/CompanyDetail';
+import MyCompanyDetail from '../pages/MyCompanyDetail';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -37,10 +42,15 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/home" component={Homepage}/>
+            <ProtectedRoute path="/detail" component={ProfileDetail}/>
+            <ProtectedRoute path="/mydetail" component={MyProfileDetail}/>
+            <ProtectedRoute path="/companydetail" component={CompanyDetail}/>
+            <ProtectedRoute path="/mycompany" component={MyCompanyDetail}/>
             <ProtectedRoute path="/add" component={AddProfile}/>
             <ProtectedRoute path="/add2" component={AddCompany}/>
-            <AdminProtectedRoute path="/edit/:_id" component={EditProfile}/>
-            <AdminProtectedRoute path="/edit2/:_id" component={EditCompany}/>
+            <ProtectedRoute path="/addinit" component={AddInitial}/>
+            <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
+            <ProtectedRoute path="/edit2/:_id" component={EditCompany}/>
             <ProtectedRoute path="/list" component={ListProfiles}/>
             <ProtectedRoute path="/list2" component={ListCompanies}/>
             <AdminProtectedRoute path="/admin" component={ListProfilesAdmin}/>
