@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Grid, Image, Loader, Header, Button } from 'semantic-ui-react';
+import { Grid, Image, Loader, Header, Button, Redirect } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,7 +9,11 @@ import { Profiles } from '../../api/profile/Profiles';
 /** Renders the first profile associated with the current user. */
 class MyProfileDetail extends React.Component {
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    if (this.props.ready) {
+      return this.props.profile ? this.renderPage() : <Redirect to='/addinit'/>;
+    }
+
+    return <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
@@ -53,6 +57,7 @@ export default withTracker(() => {
   const ready = subscription.ready();
   // Get the Stuff documents
   const profile = Profiles.collection.find({ owner: Meteor.user() ? Meteor.user().username : '' }).fetch()[0];
+
   return {
     profile,
     ready,
