@@ -6,8 +6,8 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Profiles } from '../../api/profile/Profiles';
 import { Roles } from 'meteor/alanning:roles';
+import { Profiles } from '../../api/profile/Profiles';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
@@ -26,12 +26,11 @@ class EditProfile extends React.Component {
   render() {
     if (this.props.ready) {
       return (this.props.doesOwn || this.props.isAdmin) ? this.renderPage() :
-          <Header textAlign="center">Oops! You don&apos;t have permission to edit this profile</Header>;
+        <Header textAlign="center">Oops! You don&apos;t have permission to edit this profile</Header>;
     }
 
     return <Loader active>Getting data</Loader>;
   }
-
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
