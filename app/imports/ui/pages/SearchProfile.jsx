@@ -28,7 +28,7 @@ class SearchProfile extends React.Component {
     const profiles = _.filter(Profiles.collection.find().fetch(), function (profile) { return profile.name.toUpperCase().includes(name.toUpperCase()); });
 
     return (
-      <Container id='search-page'>
+      <Container id='search-profile-page'>
         <Header as="h2" textAlign="center">Search Profiles</Header>
         <Form size='huge' textAlign="center">
           <Form.Group widths='equal'>

@@ -18,7 +18,7 @@ class MyCompanyDetail extends React.Component {
 
   renderPage() {
     return (
-      <Grid textAlign='center' style={{ height: '100vh' }} >
+      <Grid textAlign='center' style={{ height: '100vh' }} id="my-company-detail-page">
         <Grid.Column style={{ maxWidth: 650 }}>
           <Header as="h1" textAlign="center">{this.props.company.name}</Header>
           <Image
@@ -33,7 +33,7 @@ class MyCompanyDetail extends React.Component {
           <p>{this.props.company.description}</p>
           <Header as="h3" textAlign="center">My Skills</Header>
           <p>{this.props.company.skills}</p>
-          <Button as={Link} to={`/edit2/${this.props.company._id}`}>Edit</Button>
+          <Button as={Link} to={`/edit2/${this.props.company._id}`} id="edit-company">Edit</Button>
         </Grid.Column>
       </Grid>
     );

@@ -60,18 +60,18 @@ class AddInitial extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered id="add-profile-page">
+      <Grid container centered id="add-initial-page">
         <Grid.Column>
           <Header as="h2" textAlign="center">Finish Profile or Company</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <RadioField name='role' allowedValues={['student', 'company']} id="student"/>
-              <TextField name='name' id="profile-name"/>
-              <TextField name='location' id="profile-location"/>
-              <TextField name='image' id="profile-image"/>
-              <LongTextField name='description' id="profile-description"/>
-              <TextField name='skills' id="profile-skills"/>
-              <SubmitField value='Submit' id="profile-submit"/>
+              <RadioField name='role' allowedValues={['student', 'company']} id="initial-radio"/>
+              <TextField name='name' id="initial-name"/>
+              <TextField name='location' id="intial-location"/>
+              <TextField name='image' id="intial-image"/>
+              <LongTextField name='description' id="initial-description"/>
+              <TextField name='skills' id="initial-skills"/>
+              <SubmitField value='Submit' id="initial-submit"/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

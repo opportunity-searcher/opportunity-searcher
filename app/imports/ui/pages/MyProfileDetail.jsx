@@ -18,7 +18,7 @@ class MyProfileDetail extends React.Component {
 
   renderPage() {
     return (
-      <Grid textAlign='center' style={{ height: '100vh' }} >
+      <Grid textAlign='center' style={{ height: '100vh' }} id="my-profile-detail-page">
         <Grid.Column style={{ maxWidth: 650 }}>
           <Header as="h1" textAlign="center">{this.props.profile.name}</Header>
           <Image
@@ -33,7 +33,7 @@ class MyProfileDetail extends React.Component {
           <p>{this.props.profile.description}</p>
           <Header as="h3" textAlign="center">My Skills</Header>
           <p>{this.props.profile.skills}</p>
-          <Button as={Link} to={`/edit/${this.props.profile._id}`}>Edit</Button>
+          <Button as={Link} to={`/edit/${this.props.profile._id}`} id="edit-profile">Edit</Button>
         </Grid.Column>
       </Grid>
     );

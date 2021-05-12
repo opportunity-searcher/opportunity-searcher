@@ -33,19 +33,33 @@ class NavBar {
   /** Pull down login menu, go to sign up page. */
   async gotoSignupPage(testController) {
     await this.ensureLogout(testController);
+    // await this.logout(testController);
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-up');
   }
 
-  async gotoSearchPage(testController) {
-    await testController.click('#search-nav');
+  async gotoSearchProfilePage(testController) {
+    await testController.click('#search-drop');
+    await testController.click('#search1-nav');
+  }
+
+  async gotoSearchCompanyPage(testController) {
+    await testController.click('#search-drop');
+    await testController.click('#search2-nav');
+  }
+
+  async gotoSearchSkillsPage(testController) {
+    await testController.click('#search-drop');
+    await testController.click('#search3-nav');
   }
 
   async gotoProfilesPage(testController) {
+    await testController.click('#list-drop');
     await testController.click('#list-nav');
   }
 
   async gotoCompaniesPage(testController) {
+    await testController.click('#list-drop');
     await testController.click('#list2-nav');
   }
 
@@ -54,19 +68,46 @@ class NavBar {
   }
 
   async gotoAddProfilePage(testController) {
+    await testController.click('#admin-list-drop');
     await testController.click('#add-nav');
   }
 
   async gotoAddCompanyPage(testController) {
+    await testController.click('#admin-list-drop');
     await testController.click('#add2-nav');
   }
 
+  async gotoAddInitialPage(testController) {
+    await testController.click('#login-dropdown');
+    await testController.click('#add-init');
+  }
+
   async gotoEditProfilePage(testController) {
-    await testController.click('#edit-nav');
+    await testController.click('#edit-profile');
   }
 
   async gotoEditCompanyPage(testController) {
-    await testController.click('#edit2-nav');
+    await testController.click('#edit-company');
+  }
+
+  async gotoCompanyDetailPage(testController) {
+    await testController.click('#home-nav');
+    await testController.click('#click-me-company');
+  }
+
+  async gotoProfileDetailPage(testController) {
+    await testController.click('#home-nav');
+    await testController.click('#click-me-profile');
+  }
+
+  async gotoMyCompanyDetailPage(testController) {
+    await testController.click('#navbar-current-user');
+    await testController.click('#my-company-detail');
+  }
+
+  async gotoMyProfileDetailPage(testController) {
+    await testController.click('#navbar-current-user');
+    await testController.click('#my-profile-detail');
   }
 
 }

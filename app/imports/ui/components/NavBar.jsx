@@ -23,14 +23,14 @@ class NavBar extends React.Component {
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home' id="home-nav">Home Page</Menu.Item>,
 
-            <Dropdown item key="list-drop" text="List">
+            <Dropdown item key="list-drop" text="List" id="list-drop">
               <Dropdown.Menu>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/list" key='list' id="list-nav">List Profiles</Dropdown.Item>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/list2" key='list2' id="list2-nav">List Companies</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>,
 
-            <Dropdown item key="search-drop" text="Search">
+            <Dropdown item key="search-drop" text="Search" id="search-drop">
               <Dropdown.Menu>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/search-profile" key='search1' id="search1-nav">Search Profiles</Dropdown.Item>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/search-company" key='search2' id="search2-nav">Search Companies</Dropdown.Item>
@@ -40,7 +40,7 @@ class NavBar extends React.Component {
           ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-          [<Dropdown item key="admin-list-drop" text="Admin">
+          [<Dropdown item key="admin-list-drop" text="Admin" id="admin-list-drop">
             <Dropdown.Menu>
               <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin Profiles</Dropdown.Item>
               <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin2" key='admin'>Admin Companies</Dropdown.Item>
@@ -62,11 +62,11 @@ class NavBar extends React.Component {
             <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 {Roles.userIsInRole(Meteor.userId(), 'student') ? (
-                  <Dropdown.Item id="navbar-detail" icon="file" text="My Profile" as={NavLink} exact to={this.location}/>) : ''}
+                  <Dropdown.Item id="my-profile-detail" icon="file" text="My Profile" as={NavLink} exact to={this.location}/>) : ''}
                 {Roles.userIsInRole(Meteor.userId(), 'company') ? (
-                  <Dropdown.Item id="navbar-detail" icon="file" text="My Company" as={NavLink} exact to="/mycompany"/>) : ''}
+                  <Dropdown.Item id="my-company-detail" icon="file" text="My Company" as={NavLink} exact to="/mycompany"/>) : ''}
                 {!Roles.userIsInRole(Meteor.userId(), 'company') && !Roles.userIsInRole(Meteor.userId(), 'student') ? (
-                  <Dropdown.Item id="navbar-detail" icon="file" text="Finish Profile" as={NavLink} exact to="/addinit"/>) : ''}
+                  <Dropdown.Item id="add-init" icon="file" text="Finish Profile" as={NavLink} exact to="/addinit"/>) : ''}
                 <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
               </Dropdown.Menu>
             </Dropdown>
