@@ -41,7 +41,7 @@ class Homepage extends React.Component {
           <Grid.Column>
             <Container>
               <Header as="h2" textAlign="center">Member of the Day!</Header>
-              <div className="ui centered card">
+              <div className="ui centered card" id="click-me-profile">
                 {_.sample(this.props.profiles.map((userprofile, index) => <UserProfile key={index} userprofile={userprofile} />))}
               </div>
             </Container>
@@ -50,8 +50,8 @@ class Homepage extends React.Component {
           <Grid.Column>
             <Container>
               <Header as="h2" textAlign="center">Company of the Day!</Header>
-              <div className="ui centered card">
-                {_.sample(this.props.companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} />))}
+              <div className="ui centered card" id="click-me-company">
+                {_.sample(this.props.companies.map((companyprofile, index) => <CompanyProfile key={index} companyprofile={companyprofile} id="company-day"/>))}
               </div>
             </Container>
           </Grid.Column>

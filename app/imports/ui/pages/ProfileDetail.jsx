@@ -16,7 +16,7 @@ class ProfileDetail extends React.Component {
     const profile = this.props.profiles.find(item => item._id === userId);
 
     return (
-      <Grid textAlign='center' style={{ height: '100vh' }} >
+      <Grid textAlign='center' style={{ height: '100vh' }} id="profile-detail-page">
         <Grid.Column style={{ maxWidth: 650 }}>
           <Header as="h1" textAlign="center">{profile.name}</Header>
           <Image

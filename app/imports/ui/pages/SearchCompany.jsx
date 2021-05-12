@@ -28,7 +28,7 @@ class SearchCompany extends React.Component {
     const companies = _.filter(Companies.collection.find().fetch(), function (company) { return company.name.toUpperCase().includes(name.toUpperCase()); });
 
     return (
-      <Container id='search-page'>
+      <Container id='search-company-page'>
         <Header as="h2" textAlign="center">Search Companies</Header>
         <Form size='huge' textAlign="center">
           <Form.Group widths='equal'>

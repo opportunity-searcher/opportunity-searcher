@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class SearchPage {
+class SearchProfilePage {
   constructor() {
-    this.pageId = '#search-page';
+    this.pageId = '#search-profile-page';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -12,4 +12,4 @@ class SearchPage {
   }
 }
 
-export const searchPage = new SearchPage();
+export const searchProfilePage = new SearchProfilePage();
