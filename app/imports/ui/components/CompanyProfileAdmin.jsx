@@ -34,6 +34,7 @@ CompanyProfileAdmin.propTypes = {
     location: PropTypes.string,
     description: PropTypes.string,
     skills: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 
