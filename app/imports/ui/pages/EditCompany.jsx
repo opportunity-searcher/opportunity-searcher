@@ -23,7 +23,12 @@ class EditCompany extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    if (this.props.ready) {
+      return (this.props.doesOwn || this.props.isAdmin) ? this.renderPage() :
+          <Header textAlign="center">Oops! You don&apos;t have permission to edit this profile</Header>;
+    }
+
+    return <Loader active>Getting data</Loader>;
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
@@ -55,6 +60,8 @@ EditCompany.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
+  doesOwn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -67,8 +74,13 @@ export default withTracker(({ match }) => {
   const ready = subscription.ready();
   // Get the document
   const doc = Companies.collection.findOne(documentId);
+
+  const doesOwn = doc.owner === Meteor.user().username;
+  const isAdmin = Roles.userIsInRole(Meteor.user(), ['admin']);
   return {
     doc,
     ready,
+    doesOwn,
+    isAdmin,
   };
 })(EditCompany);

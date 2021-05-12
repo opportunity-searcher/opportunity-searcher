@@ -16,7 +16,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className='opportunities-landing-background' id="home-page">
-        <Header size='huge' textAlign='center' color='black'> Opportunity Searcher {this.props.user ? 'yoo' : 'noo'} </Header>
+        <Header size='huge' textAlign='center' color='black'> Opportunity Searcher </Header>
 
         <Grid id='home-page' verticalAlign='middle' textAlign='center' container columns={2}>
 
