@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Roles } from 'meteor/alanning:roles';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
