@@ -15,6 +15,9 @@
     { "name": "Matthew Ito", "owner": "john@foo.com", "location": "Los Angeles", "image": "https://avatars.githubusercontent.com/u/71101234?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Javascript"},
     { "name": "Kegan Flagg", "owner": "john@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/43965971?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Rust"},
     { "name": "Jay Paul Luben", "owner": "greg@foo.com", "location": "Honolulu", "image": "https://avatars.githubusercontent.com/u/49574660?v=4", "description": "UH Manoa student studying ICS and Japanese.", "skills": "Japanese, Kali Linux"}
+    { "name": "Joe Tiger", "owner": "greg@foo.com", "location": "Anchorage", "image": "https://c.pxhere.com/photos/44/dc/smiling_boy_man_professional_happy_people_young_portrait-865531.jpg!d", "description": "UH Manoa transfer that enjoys rock climbing.", "skills": "Marketing, Front end sales"}
+    { "name": "Sarah Connor", "owner": "boom@foo.com", "location": "Oahu", "image": "https://i.pinimg.com/originals/9c/7e/cb/9c7ecbe015abbae7d54973691b0d3b6c.jpg", "description": "Second year Manoa student majoring in Marketing", "skills": "Math, Excel"}
+    { "name": "Jane Doe", "owner": "hi@foo.com", "location": "Kauai", "image": "https://carefirstny.org/wp-content/uploads/2014/10/11-555x477.jpg", "description": "Senior Engineering major", "skills": "Revit, AutoCad"}
   ],
 
   "defaultCompanies": [
@@ -24,5 +27,9 @@
     { "name": "Epic Games", "location": "Cary, North Carolina", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Epic_Games_office.jpg/1920px-Epic_Games_office.jpg", "description": "Gaming company known for their multiple Battle Royale titles such as Fortnite.", "skills": "Unreal Engine, Game Development" ,"owner": "greg@foo.com"},
     { "name": "Mediatonic", "location": "Uxbridge, United Kingdom", "image": "https://d1x3t653etfkkb.cloudfront.net/landscape-media-carousel/_size1920x1080/PhilBean1.png", "description": "Gaming company taking over the world with their fun games such as Fall Guys.", "skills": "Unity, Game Development" ,"owner": "john@foo.com"},
     { "name": "Microsoft", "location": "Redmond, WA", "image": "https://s3-ap-southeast-2.amazonaws.com/casfawsbucket/casf/wp-content/uploads/2017/06/14130650/DuPont-Corian_Microsoft-FI-Foto-Andreas-Frisch-GSP-architekten-1080x640.jpg", "description": "The company that developed Visual Studio Code.", "skills": "Java, C#, Rust", "owner": "john@foo.com" }
+    { "name": "ABC Stores", "location": "Honolulu", "image": "https://en.wikipedia.org/wiki/ABC_Stores#/media/File:An_abc_stores_in_honolulu_hawaii_by_eekim_2012.jpg", "description": "Local convience store chain searching for new management", "skills": "Marketing, Management", "owner": "yo@foo.com" }
+    { "name": "Bank of Hawaii", "location": "Honolulu", "image": "https://en.wikipedia.org/wiki/Bank_of_Hawaii#/media/File:Bank_of_Hawaii_Logo.svg", "description": "Honolulu based bank", "skills": "Math, Economics", "owner": "john@foo.com" }
+    { "name": "Kona Brewing Company", "location": "Hawaii, HI", "image": "https://en.wikipedia.org/wiki/Kona_Brewing_Company#/media/File:Hawaii_(5496324082).jpg", "description": "Brewing company with a focus on ales", "skills": "Brewing, Marketing, AdSense", "owner": "john@foo.com" }
+
   ]
 }
